@@ -8,8 +8,10 @@ const About = () => {
             <Common 
                 name='Welcome to About Page' 
                 imgsrc={about} 
-                visit='/contact' 
-                btnname="Contact Now" 
+                visit='/sign_up' 
+                btnname="Sign Up" 
+                message="We are a startup which provide quality hyservices which are focused on fulfilling all your medical needs"
+                userName="User"
             />
         </>
     )

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom"
+//const Common = (props)=>{ return props.title }
 
 const Common = ({
     name,
@@ -7,7 +8,9 @@ const Common = ({
     isCompName,
     compName,
     visit,
-    btnname
+    btnname,
+    message,
+    userName
 }) => {
     return (
         <>
@@ -23,7 +26,10 @@ const Common = ({
                                     
                                 </h1>
                                 <h2 className="my-3">
-                                    We are the team of talented developer making websites
+                                   Hello, {userName}
+                                </h2>
+                                <h2 className="my-3">
+                                   {message}
                                 </h2>
                                 <div className="mt-3">
                                     <NavLink to={visit} className="btn-get-started ">

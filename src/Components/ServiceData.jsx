@@ -4,32 +4,44 @@ import web from "../images/web.jpg";
 import marketing from "../images/marketing.jpg";
 import software from "../images/software.jpg";
 import fullstack from "../images/fullstack.jpg";
+import medicines from "../images/medicines.jpg"
+import cart from "../images/cart.webp"
+import order from "../images/orders.jpg"
 
 const ServiceData = [
     {
-        imgsrc: web,
-        title: "Web Development"
+        imgsrc: medicines,
+        title: "Order Medicines Today",
+        body:"Check your inventory and Order your medicines today.",
+        link:'/drugsList',
+        authenticate:false
     },
     {
-        imgsrc: android,
-        title: "Android Development"
+        imgsrc: cart,
+        title: "Your Cart",
+        body:"The medicines you have put in your cart can be seen here",
+        link:'/cart',
+        authenticate:true
     },
     {
-        imgsrc: software,
-        title: "Software Development"
+        imgsrc: order,
+        title: "Your Orders",
+        body:"The order you have made in past can be seen from here",
+        link:'/orders',
+        authenticate:true
     },
-    {
-        imgsrc: marketing,
-        title: "Digital Marketing"
-    },
-    {
-        imgsrc: fullstack,
-        title: "Full Stack Development"
-    },
-    {
-        imgsrc: marketing,
-        title: "Marketing"
-    }
+    // {
+    //     imgsrc: marketing,
+    //     title: "Digital Marketing"
+    // },
+    // {
+    //     imgsrc: fullstack,
+    //     title: "Full Stack Development"
+    // },
+    // {
+    //     imgsrc: marketing,
+    //     title: "Marketing"
+    // }
 ];
 
 export default ServiceData;

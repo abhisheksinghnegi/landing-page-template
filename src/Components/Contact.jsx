@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import swal from 'sweetalert';
 
+const sendmail = require('sendmail')();
+ 
 
 const Contact = () => {
 
@@ -10,20 +12,38 @@ const Contact = () => {
         msg: ""
     })
 
-    const inputEvent = (e) => {
-        const { name, value } = e.target;
-        setData((preVal) => {
-            return {
-                ...preVal,
-                [name] : value,
-            }
-        });
+    const msgInputHandler = (event) => {
+      setData((prevState)=>{
+        return({
+          ...prevState,
+          msg: event.target.value
+        })
+      })
     }
+    const fullNameInputHandler = (event) => {
+      setData((prevState)=>{
+        return({
+          ...prevState,
+          fullname: event.target.value
+        })
+      })    }
+    const emailInputHandler = (event) => {
+      setData((prevState)=>{
+        return({
+          ...prevState,
+          email: event.target.value
+        })
+      })    }
 
-    const formSubmitHandle = (e) => {
-        e.preventDefault();
+    const formSubmitHandle = (event) => {
+        event.preventDefault();
         // message can be saved to db or email can be sent from here!
-        
+        console.log(data)
+        setData({
+          fullname: "",
+          email: "",
+          msg: ""
+        })
         swal("Sent!", "Message Sent Successfully!", "success");
     }
 
@@ -38,7 +58,7 @@ const Contact = () => {
             <form onSubmit={formSubmitHandle}>
               <div className="mb-3">
                 <label htmlFor="exampleFormControlInput1" className="form-label">
-                  FullName
+                  Email Address
                 </label>
                 <input
                   type="text"
@@ -46,11 +66,12 @@ const Contact = () => {
                   id="exampleFormControlInput1"
                   name="fullname"
                   value={data.fullname}
-                  onChange={inputEvent}
+                  onChange={fullNameInputHandler}
                   placeholder="Enter your name"
                 />
+                <br/>
                 <label htmlFor="exampleFormControlInput1" className="form-label">
-                  Email address
+                  Password
                 </label>
                 <input
                   type="email"
@@ -58,21 +79,22 @@ const Contact = () => {
                   id="exampleFormControlInput1"
                   name="email"
                   value={data.email}
-                  onChange={inputEvent}
+                  onChange={emailInputHandler}
                   placeholder="name@example.com"
                 />
               </div>
-              <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label">
-                  Example textarea
+              <label htmlFor="exampleFormControlTextarea1" className="form-label">
+                  Feedback
                 </label>
+              <div className="mb-3">
                 <textarea
-                  className="form-control"
+                  style={{width:"100%", height:"100%"}}
+                  className="form-cogntrol"
                   id="exampleFormControlTextarea1"
                   rows="3"
                   name="msg"
                   value={data.msg}
-                  onChange={inputEvent}
+                  onChange={msgInputHandler}
                 ></textarea>
                 <div className="col-12">
                   <button className="btn btn-outline-primary mt-3" type="submit">

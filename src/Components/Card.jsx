@@ -1,20 +1,39 @@
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-const Card = ({ 
+const Card = ({
     imgsrc,
-    title
+    title,
+    body,
+    link,
+    disable,
+    authenticate
 }) => {
-
+    const history = useHistory();
+    const clicked = () => {
+        if (authenticate) {
+            if (disable) {
+                let path = link;
+                history.push(path);
+            } else {
+                let path = '/sign_up';
+                history.push(path);
+            }
+        } else {
+            let path = link;
+            history.push(path);
+        }
+    }
     return (
         <>
-            <div className="col-md-4 col-10 mx-auto">
+            <div className="col-md-4 col-10 mx-auto" onClick={clicked}>
                 <div className="card">
-                    <img src={imgsrc} className="card-img-top" id="coverImg" alt="card" />
+                    <img src={imgsrc} style={{ height: "300px" }} className="card-img-top" id="coverImg" alt="card" />
                     <div className="card-body">
                         <h5 className="card-title">{title}</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <NavLink to="/" className="btn btn-primary">Go somewhere</NavLink>
+                        <p className="card-text">{body}</p>
+                        {/* <NavLink to="/" className="btn btn-primary">Go somewhere</NavLink> */}
                     </div>
                 </div>
             </div>

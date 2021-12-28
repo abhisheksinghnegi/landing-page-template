@@ -1,8 +1,10 @@
 import React from "react";
 import {NavLink } from "react-router-dom"
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
+  const {isAuthenticated} = useAuth0()
+
   return (
     <>
       <div className="container-fluid nav_bg">
@@ -11,7 +13,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg navbar-light">
               <div className="container-fluid">
                 <NavLink  exact className="navbar-brand" to="/">
-                  Company Name
+                  Medical Shop
                 </NavLink>
                 <button
                   className="navbar-toggler"
@@ -51,6 +53,11 @@ const Navbar = () => {
                     <li className="nav-item">
                       <NavLink activeClassName="menu_active"  exact className="nav-link" to="/contact">
                         Contact
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink activeClassName="menu_active"  exact className="nav-link" to="/sign_up">
+                        { isAuthenticated ? "Profile":"Sign Up"}
                       </NavLink>
                     </li>
                   </ul>
